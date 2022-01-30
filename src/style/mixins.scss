@@ -1,0 +1,18 @@
+@mixin focus-style($class: ":focus-visible") {
+	--focus-style-inset: 0;
+	--focus-style-radius: 0.4rem;
+	--focus-style-size: 0.15rem;
+
+	&#{$class} {
+		outline: none;
+
+		&::before {
+			border-radius: var(--focus-style-radius);
+			box-shadow: inset 0 0 0 var(--focus-style-size) var(--primary);
+			content: "";
+			inset: var(--focus-style-inset);
+			position: absolute;
+			z-index: 1;
+		}
+	}
+}

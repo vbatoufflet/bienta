@@ -1,0 +1,40 @@
+@mixin tooltip {
+	align-items: center;
+	background-color: var(--tooltip-background);
+	border-radius: 0.2rem;
+	box-shadow: 0 0.1rem 0.5rem var(--tooltip-shadow);
+	display: flex;
+	gap: 1rem;
+	justify-content: center;
+	padding: var(--tooltip-padding);
+	pointer-events: none;
+	user-select: none;
+	visibility: hidden;
+	z-index: 700;
+
+	&[data-anchor="bottom"] {
+		transform: translateY(0.35rem);
+
+		&::before {
+			border-bottom-color: var(--tooltip-background);
+			bottom: 100%;
+		}
+	}
+
+	&[data-anchor="top"] {
+		transform: translateY(-0.35rem);
+
+		&::before {
+			border-top-color: var(--tooltip-background);
+			top: 100%;
+		}
+	}
+
+	&::before {
+		border: 0.5rem solid transparent;
+		content: "";
+		left: 50%;
+		position: absolute;
+		transform: translateX(-0.5rem);
+	}
+}

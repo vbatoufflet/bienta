@@ -1,0 +1,110 @@
+@mixin input {
+	--input-icon-size: 2.5rem;
+
+	align-items: center;
+	background-color: var(--input-background);
+	border-radius: 0.2rem;
+	display: inline-flex;
+	height: var(--input-size);
+	line-height: var(--input-size);
+	min-height: var(--input-size);
+	min-width: var(--input-min-width);
+	position: relative;
+	vertical-align: middle;
+
+	input,
+	textarea {
+		background: none;
+		border: none;
+		border-radius: inherit;
+		color: inherit;
+		flex-grow: 1;
+		font: inherit;
+		margin: 0;
+		padding: 0;
+		width: 0;
+
+		&:focus {
+			box-shadow: none;
+			outline: none;
+		}
+	}
+
+	&:focus-within {
+		box-shadow: 0 0 0 0.15rem var(--primary);
+		outline: none;
+	}
+
+	&[aria-invalid="true"] {
+		box-shadow: 0 0 0 0.15rem var(--red);
+	}
+
+	input {
+		padding: 0 var(--input-padding);
+	}
+
+	> .b-icon {
+		pointer-events: none;
+
+		::v-deep() {
+			--background: var(--input-background);
+
+			.badge {
+				transform: scale(0.65) translate(-150%, -175%);
+			}
+		}
+	}
+
+	.help,
+	.invalid {
+		align-items: center;
+		display: flex;
+		justify-content: center;
+		pointer-events: all;
+
+		&::before {
+			border-radius: 100%;
+			font-size: 0.75rem;
+			height: 1rem;
+			line-height: 1rem;
+			min-width: 1rem;
+			text-align: center;
+			width: 1rem;
+		}
+	}
+
+	.help {
+		font-size: 0.9rem;
+		opacity: 0.65;
+
+		&:hover {
+			opacity: 1;
+		}
+
+		&::before {
+			background-color: var(--color);
+			color: var(--background);
+			content: "?";
+		}
+	}
+
+	.invalid {
+		&::before {
+			background-color: var(--red);
+			color: white;
+			content: "!";
+		}
+	}
+
+	.arrows {
+		display: flex;
+		align-items: center;
+		flex-direction: column;
+		font-size: 0.65rem;
+		justify-content: center;
+	}
+
+	.b-dropdown {
+		min-width: 100%;
+	}
+}
