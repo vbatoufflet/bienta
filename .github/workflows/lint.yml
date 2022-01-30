@@ -1,0 +1,27 @@
+---
+name: Lint
+concurrency:
+  group: ${{ github.head_ref }}
+  cancel-in-progress: true
+on:
+  pull_request:
+    branches:
+    - master
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout branch
+      uses: actions/checkout@v2
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        cache: npm
+        node-version: 17
+    - name: Install Node.js dependencies
+      shell: bash
+      run: |
+        npm install --no-save --silent
+    - name: Ensure linting
+      run: |
+        npx eslint --max-warnings=0 .
