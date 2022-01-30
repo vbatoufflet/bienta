@@ -414,5 +414,9 @@ watch(active, state => dropdownComponent.value?.toggle(state));
 
         outline: none;
     }
+
+    > .b-dropdown {
+        min-width: 100%;
+    }
 }
 </style>
