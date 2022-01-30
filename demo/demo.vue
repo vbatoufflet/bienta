@@ -238,6 +238,38 @@
             </b-flex>
         </template>
 
+        <template v-else-if="hash === '#datetime'">
+            <h2>Basic</h2>
+            <b-flex align="center" gap="1rem">
+                <b-datetime v-model="models.datetime" v-autofocus icon-name="calendar" />
+            </b-flex>
+            <b-flex align="center" gap="1rem">
+                <b-datetime v-model="models.datetime" icon-name="calendar" readonly />
+                <b-label class="subtle" icon-name="arrow-left">Read-only</b-label>
+            </b-flex>
+            <b-flex align="center" gap="1rem">
+                <b-datetime v-model="models.datetime" icon-name="calendar" disabled />
+                <b-label class="subtle" icon-name="arrow-left">Disabled</b-label>
+            </b-flex>
+            <h2>Date</h2>
+            <b-flex align="center" gap="1rem">
+                <b-datetime v-model="models.date" icon-name="calendar-day" type="date" />
+            </b-flex>
+            <h2>Time</h2>
+            <b-flex align="center" gap="1rem">
+                <b-datetime v-model="models.time" icon-name="clock" type="time" />
+            </b-flex>
+            <h2>UTC</h2>
+            <b-flex align="center" gap="1rem">
+                <b-datetime v-model="models.datetime" icon-name="calendar" utc />
+            </b-flex>
+            <h2>Locale</h2>
+            <b-flex align="center" gap="1rem">
+                <b-datetime v-model="models.datetime" icon-name="calendar" locale="fr-FR" />
+                <b-label class="subtle" icon-name="arrow-left">fr-FR</b-label>
+            </b-flex>
+        </template>
+
         <template v-else-if="hash === '#form'">
             <b-form>
                 <b-flex direction="column" gap="1rem">
@@ -591,6 +623,7 @@ const components: Record<string, string> = {
     button: "Button",
     checkbox: "Checkbox",
     color: "Color",
+    datetime: "Datetime",
     form: "Form",
     icon: "Icon",
     input: "Input",
@@ -612,6 +645,9 @@ const locale = new Intl.DateTimeFormat("en", {weekday: "long"});
 const spinnerSizes = [16, 24, 32, undefined];
 const weekdays = [...new Array(7).keys()].map(i => locale.format(new Date(1970, 0, i + 5)));
 
+const now = new Date();
+now.setUTCHours(0, 0, 0, 0);
+
 const bienta = useBienta();
 
 const hash = ref("");
@@ -623,6 +659,8 @@ const models = ref({
     colorAlpha: "#c6282880",
     completion: "",
     darkMode: matchMedia("(prefers-color-scheme: dark)").matches,
+    date: now.toISOString().slice(0, 10),
+    datetime: now.toISOString(),
     input: "",
     inputNumber: 42,
     inputTextarea: "This is a sample text!",
@@ -645,6 +683,7 @@ const models = ref({
         "ninth",
         "tenth",
     ],
+    time: now.toTimeString().slice(0, 8),
 });
 
 const searchComponent = ref<SearchPublicInstance>();

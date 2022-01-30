@@ -2,6 +2,7 @@ export {default as BadgeComponent} from "./badge/badge.vue";
 export {default as ButtonComponent} from "./button/button.vue";
 export {default as CheckboxComponent} from "./checkbox/checkbox.vue";
 export {default as ColorComponent} from "./color/color.vue";
+export {default as DatetimeComponent} from "./datetime/datetime.vue";
 export {default as DropdownComponent} from "./dropdown/dropdown.vue";
 export {default as FlexComponent} from "./flex/flex.vue";
 export {default as FormComponent} from "./form/form.vue";

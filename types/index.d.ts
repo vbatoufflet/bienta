@@ -93,6 +93,14 @@ export declare type ColorPublicInstance = PublicInstance<{
     reportValidity(): boolean;
 }>;
 
+export declare type DatetimeType = "date" | "datetime" | "time";
+
+export declare type DatetimePublicInstance = PublicInstance<{
+    checkValidity(): boolean;
+    focus(): void;
+    reportValidity(): boolean;
+}>;
+
 export declare type DropdownAnchor =
     | "bottom-left"
     | "bottom-right"
