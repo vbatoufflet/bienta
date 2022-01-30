@@ -38,8 +38,8 @@
             <b-icon
                 v-if="iconName !== undefined"
                 :badge="iconBadge"
-                :flip="iconFlip"
                 :name="iconName"
+                :pack="iconPack"
             />
 
             <template v-if="hasLabel">
@@ -84,7 +84,7 @@ import bDropdown from "~src/components/dropdown/dropdown.vue";
 import bIcon from "~src/components/icon/icon.vue";
 import {shortcutLabel} from "~src/directives/shortcut";
 import {useBienta} from "~src/inject";
-import {BadgeColor, ButtonType, DropdownAnchor, DropdownPublicInstance, IconFlip} from "~types";
+import {BadgeColor, ButtonType, DropdownAnchor, DropdownPublicInstance, IconPack} from "~types";
 
 export default {
     name: "b-button",
@@ -138,9 +138,9 @@ const props = defineProps({
         default: undefined,
         type: [Number, String],
     },
-    iconFlip: {
+    iconPack: {
         default: undefined,
-        type: String as PropType<IconFlip>,
+        type: String as PropType<IconPack>,
     },
     label: {
         default: undefined,

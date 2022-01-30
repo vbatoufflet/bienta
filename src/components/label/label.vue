@@ -3,8 +3,8 @@
         <b-icon
             v-if="iconName !== undefined"
             :badge="iconBadge"
-            :flip="iconFlip"
             :name="iconName"
+            :pack="iconPack"
         />
 
         <slot></slot>
@@ -19,7 +19,7 @@ import {PropType} from "vue";
 import bBadge from "~src/components/badge/badge.vue";
 import {generateID} from "~src/components/common";
 import bIcon from "~src/components/icon/icon.vue";
-import {IconFlip} from "~types";
+import {IconPack} from "~types";
 
 export default {
     name: "b-label",
@@ -44,9 +44,9 @@ defineProps({
         default: undefined,
         type: [Number, String],
     },
-    iconFlip: {
+    iconPack: {
         default: undefined,
-        type: String as PropType<IconFlip>,
+        type: String as PropType<IconPack>,
     },
 });
 

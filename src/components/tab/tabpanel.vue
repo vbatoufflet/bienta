@@ -16,8 +16,8 @@
                 :controls="id"
                 :disabled="disabled ? true : undefined"
                 :icon-badge="iconBadge"
-                :icon-flip="iconFlip"
                 :icon-name="iconName"
+                :icon-pack="iconPack"
                 @click="swicth"
             >
                 {{ label }}
@@ -33,7 +33,7 @@ import {PropType, getCurrentInstance, onMounted, onUpdated, ref} from "vue";
 
 import bButton from "~src/components/button/button.vue";
 import {generateID} from "~src/components/common";
-import {IconFlip} from "~types";
+import {IconPack} from "~types";
 
 export interface TabswitchEvent {
     id: string;
@@ -65,9 +65,9 @@ defineProps({
         default: undefined,
         type: [Number, String],
     },
-    iconFlip: {
+    iconPack: {
         default: undefined,
-        type: String as PropType<IconFlip>,
+        type: String as PropType<IconPack>,
     },
     label: {
         required: true,

@@ -3,8 +3,8 @@
         <b-icon
             v-if="iconName !== undefined"
             :badge="iconBadge"
-            :flip="iconFlip"
             :name="iconName"
+            :pack="iconPack"
         />
         <b-icon-check v-else-if="type === 'success'" />
         <b-icon-exclamation v-else-if="type === 'warning'" />
@@ -24,7 +24,7 @@ import bIconCheck from "~src/components/icon/internal/check.vue";
 import bIconExclamation from "~src/components/icon/internal/exclamation.vue";
 import bIconInfo from "~src/components/icon/internal/info.vue";
 import bIconTimes from "~src/components/icon/internal/times.vue";
-import {IconFlip, MessageType} from "~types";
+import {IconPack, MessageType} from "~types";
 
 export default {
     name: "b-message",
@@ -48,9 +48,9 @@ defineProps({
         default: undefined,
         type: [Number, String],
     },
-    iconFlip: {
+    iconPack: {
         default: undefined,
-        type: String as PropType<IconFlip>,
+        type: String as PropType<IconPack>,
     },
     inline: {
         default: false,

@@ -22,8 +22,8 @@
         <b-icon
             v-if="iconName !== undefined"
             :badge="iconBadge"
-            :flip="iconFlip"
             :name="iconName"
+            :pack="iconPack"
         />
 
         <div class="container">
@@ -65,7 +65,7 @@ import {PropType, computed, nextTick, ref} from "vue";
 import {generateID} from "~src/components/common";
 import bIcon from "~src/components/icon/icon.vue";
 import bIconTimes from "~src/components/icon/internal/times.vue";
-import {IconFlip} from "~types";
+import {IconPack} from "~types";
 
 const defaultSeparator = ",";
 
@@ -96,9 +96,9 @@ const props = defineProps({
         default: undefined,
         type: [Number, String],
     },
-    iconFlip: {
+    iconPack: {
         default: undefined,
-        type: String as PropType<IconFlip>,
+        type: String as PropType<IconPack>,
     },
     label: {
         default: undefined,

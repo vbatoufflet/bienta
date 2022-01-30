@@ -11,7 +11,7 @@ import {PropType, computed} from "vue";
 
 import {generateID} from "~src/components/common";
 import {useBienta} from "~src/inject";
-import {IconFlip, IconPack} from "~types";
+import {IconPack} from "~types";
 
 export default {
     name: "b-icon",
@@ -23,10 +23,6 @@ const props = defineProps({
     badge: {
         default: undefined,
         type: [Number, String],
-    },
-    flip: {
-        default: undefined,
-        type: String as PropType<IconFlip>,
     },
     name: {
         required: true,
@@ -57,10 +53,6 @@ const classList = computed(() => {
                 );
             } else {
                 out.push("fa", `fa-${props.name}`);
-            }
-
-            if (props.flip) {
-                out.push(`fa-flip-${props.flip}`);
             }
 
             break;

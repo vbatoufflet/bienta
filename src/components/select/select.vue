@@ -21,8 +21,8 @@
         <b-icon
             v-if="iconName !== undefined"
             :badge="iconBadge"
-            :flip="iconFlip"
             :name="iconName"
+            :pack="iconPack"
         />
 
         <template v-if="!dropdownVisibility">
@@ -111,7 +111,7 @@ import bIcon from "~src/components/icon/icon.vue";
 import bIconChevron from "~src/components/icon/internal/chevron.vue";
 import bLabel from "~src/components/label/label.vue";
 import bSpinner from "~src/components/spinner/spinner.vue";
-import {DropdownPublicInstance, IconFlip, LabelPublicInstance, SelectOption} from "~types";
+import {DropdownPublicInstance, IconPack, LabelPublicInstance, SelectOption} from "~types";
 
 export default {
     name: "b-select",
@@ -144,9 +144,9 @@ const props = defineProps({
         default: undefined,
         type: [Number, String],
     },
-    iconFlip: {
+    iconPack: {
         default: undefined,
-        type: String as PropType<IconFlip>,
+        type: String as PropType<IconPack>,
     },
     label: {
         default: undefined,
