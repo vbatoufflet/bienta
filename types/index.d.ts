@@ -123,8 +123,6 @@ export declare type FlexWrap = "nowrap" | "wrap-reverse" | "wrap";
 
 export declare type FlexPublicInstance = PublicInstance;
 
-export declare type IconFlip = "both" | "horizontal" | "vertical";
-
 export declare type IconPack = "font-awesome" | "material";
 
 export declare type IconPublicInstance = PublicInstance;
