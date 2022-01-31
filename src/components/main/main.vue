@@ -53,7 +53,8 @@ const id = generateID("main");
         }
 
         h1,
-        h2 {
+        h2,
+        h3 {
             font-weight: normal;
         }
 
@@ -64,6 +65,38 @@ const id = generateID("main");
         h2 {
             font-size: 1.5rem;
             margin-top: var(--main-block-margin);
+        }
+
+        dl,
+        ol,
+        ul,
+        p,
+        pre {
+            margin: 1.5rem 0;
+        }
+
+        code,
+        pre {
+            background-color: var(--main-pre-background);
+            border-radius: 0.2rem;
+        }
+
+        code {
+            padding: 0.175rem 0.35rem;
+        }
+
+        pre {
+            padding: 0.75rem;
+
+            code {
+                padding: 0;
+            }
+        }
+
+        dl,
+        ol,
+        ul {
+            padding: 0 1.25rem;
         }
 
         .b-button {

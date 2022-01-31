@@ -54,6 +54,7 @@ const theme: Theme = {
     // main
     "main-button-background": "#2f2f33",
     "main-button-color": "var(--color)",
+    "main-pre-background": "#1d1d21",
 
     // message
     "message-background": "#1d1d21",
