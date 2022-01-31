@@ -157,7 +157,7 @@ const props = defineProps({
     },
     modelValue: {
         required: true,
-        type: [String],
+        type: String,
     },
     placeholder: {
         default: undefined,
