@@ -2,7 +2,7 @@
     <aside :id="id" class="b-sidebar" :class="{resizing}" :data-clip="clip" :data-mode="mode">
         <slot></slot>
 
-        <div class="handle" @dblclick="resetSize" @pointerdown="onPointer"></div>
+        <div v-if="resize" class="handle" @dblclick="resetSize" @pointerdown="onPointer"></div>
     </aside>
 </template>
 
@@ -28,6 +28,10 @@ const props = defineProps({
     mode: {
         default: "static",
         type: String as PropType<SidebarMode>,
+    },
+    resize: {
+        default: false,
+        type: Boolean,
     },
 });
 
