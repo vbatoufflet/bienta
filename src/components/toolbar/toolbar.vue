@@ -206,11 +206,16 @@ watch(clip, (to, from) => {
         }
     }
 
+    &:not([data-clip]),
     &[data-clip="bottom"],
     &[data-clip="top"] {
         height: var(--toolbar-size);
-        left: 0;
         padding: 0 var(--spacing);
+    }
+
+    &[data-clip="bottom"],
+    &[data-clip="top"] {
+        left: 0;
         right: 0;
     }
 
