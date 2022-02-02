@@ -40,13 +40,13 @@ export default {
 
 <script lang="ts" setup>
 defineProps({
-    iconName: {
-        default: undefined,
-        type: String,
-    },
     iconBadge: {
         default: undefined,
         type: [Number, String],
+    },
+    iconName: {
+        default: undefined,
+        type: String,
     },
     iconPack: {
         default: undefined,

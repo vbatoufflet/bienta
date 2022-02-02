@@ -14,7 +14,9 @@
             v-model="model"
             v-autofocus
             :completion="completion"
+            :icon-badge="iconBadge"
             :icon-name="iconName"
+            :icon-pack="iconPack"
             :label="label"
             :placeholder="placeholder"
             type="search"
@@ -34,7 +36,7 @@ import {PropType, nextTick, ref} from "vue";
 
 import {generateID} from "~src/components/common";
 import bInput from "~src/components/input/input.vue";
-import {CompletionFunc, InputPublicInstance} from "~types";
+import {CompletionFunc, IconPack, InputPublicInstance} from "~types";
 
 export default {
     name: "b-search",
@@ -50,9 +52,17 @@ defineProps({
         default: undefined,
         type: Function as PropType<CompletionFunc<string>>,
     },
+    iconBadge: {
+        default: undefined,
+        type: [Number, String],
+    },
     iconName: {
         default: "search",
         type: String,
+    },
+    iconPack: {
+        default: undefined,
+        type: String as PropType<IconPack>,
     },
     label: {
         default: undefined,

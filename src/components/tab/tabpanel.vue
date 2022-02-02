@@ -57,13 +57,13 @@ defineProps({
         default: false,
         type: Boolean,
     },
-    iconName: {
-        default: undefined,
-        type: String,
-    },
     iconBadge: {
         default: undefined,
         type: [Number, String],
+    },
+    iconName: {
+        default: undefined,
+        type: String,
     },
     iconPack: {
         default: undefined,
