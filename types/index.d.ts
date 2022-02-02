@@ -89,7 +89,7 @@ export declare type ColorCase = "lower" | "upper";
 
 export declare type ColorPublicInstance = PublicInstance<{
     checkValidity(): boolean;
-    focus(select: boolean): void;
+    focus(select?: boolean): void;
     reportValidity(): boolean;
 }>;
 
@@ -139,7 +139,7 @@ export declare type InputType =
 
 export declare type InputPublicInstance = PublicInstance<{
     checkValidity(): boolean;
-    focus(select: boolean): void;
+    focus(select?: boolean): void;
     reportValidity(): boolean;
 }>;
 
