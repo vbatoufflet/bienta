@@ -11,7 +11,6 @@ import {NamedDirective} from "~types/vue";
 
 import {codes, macSymbols, platform} from "./vars";
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 type DocumentWithInstance = Document & {_bienta: Bienta};
 
 type Shortcut =

@@ -5,7 +5,6 @@ import {NamedDirective} from "~types/vue";
 
 import tooltip from "./tooltip.vue";
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
 export type ElementWithTooltip = HTMLElement & {
     _binding: DirectiveBinding;
     _handler(ev: MouseEvent | TouchEvent): void;

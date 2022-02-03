@@ -91,7 +91,6 @@ const items = computed<PageItem[]>(() => {
 });
 
 const range = (start: number, end: number): PageItem[] => {
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     return Array.from({length: end - start + 1}, (_, idx) => start + idx);
 };
 
