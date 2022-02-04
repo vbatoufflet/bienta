@@ -7,8 +7,8 @@
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "vue-tsc --noEmit && vite build",
-    "build:demo": "vite build --config demo/vite.config.ts",
-    "dev": "vite --config demo/vite.config.ts",
+    "build:docs": "vite build --config docs/vite.config.ts",
+    "dev": "vite --config docs/vite.config.ts",
     "lint": "eslint --ext .js,.ts,.vue .",
     "serve": "vite preview"
   },
@@ -32,6 +32,7 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-unicorn": "^40.0.0",
     "fast-equals": "^2.0.4",
+    "highlight.js": "^11.4.0",
     "js-xxhash": "^1.0.4",
     "material-icons": "^1.10.5",
     "nanoid": "^3.1.32",
@@ -39,8 +40,10 @@
     "sass": "^1.45.2",
     "typescript": "^4.3.2",
     "vite": "^2.6.4",
+    "vite-plugin-md": "^0.11.7",
     "vite-tsconfig-paths": "^3.3.17",
     "vue": "^3.2.26",
+    "vue-router": "^4.0.12",
     "vue-tsc": "^0.31.1"
   },
   "peerDependencies": {

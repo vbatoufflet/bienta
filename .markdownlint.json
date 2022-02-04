@@ -1,0 +1,32 @@
+{
+  "line-length": false,
+  "no-inline-html": {
+    "allowed_elements": [
+      "b-badge",
+      "b-button",
+      "b-checkbox",
+      "b-color",
+      "b-flex",
+      "b-icon",
+      "b-input",
+      "b-label",
+      "b-list",
+      "b-markdown",
+      "b-message",
+      "b-pagination",
+      "b-radio",
+      "b-radiogroup",
+      "b-separator",
+      "b-slider",
+      "b-spacer",
+      "b-spinner",
+      "b-tablist",
+      "b-tabpanel",
+      "b-toolbar",
+      "router-link",
+      "script",
+      "style",
+      "template"
+    ]
+  }
+}

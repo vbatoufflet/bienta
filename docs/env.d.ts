@@ -1,3 +1,5 @@
+/// <reference types="../src/env" />
+
 export {};
 
 declare global {

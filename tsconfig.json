@@ -29,7 +29,7 @@
     "node_modules"
   ],
   "include": [
-    "demo",
+    "docs",
     "src",
     "types",
   ]

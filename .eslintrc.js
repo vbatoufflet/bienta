@@ -10,6 +10,12 @@ module.exports = {
         "@vue/typescript/recommended",
         "plugin:vue/vue3-recommended",
     ],
+    overrides: [
+        {
+            files: "docs/**/*.vue",
+            rules: {"vue/multi-word-component-names": "off"},
+        },
+    ],
     rules: {
         "vue/component-definition-name-casing": ["error", "kebab-case"],
         "vue/html-indent": ["error", 4],
