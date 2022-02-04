@@ -32,6 +32,7 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-unicorn": "^40.0.0",
     "fast-equals": "^2.0.4",
+    "js-xxhash": "^1.0.4",
     "material-icons": "^1.10.5",
     "nanoid": "^3.1.32",
     "prettier": "^2.5.1",

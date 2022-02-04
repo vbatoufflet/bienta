@@ -399,6 +399,19 @@
             </b-flex>
         </template>
 
+        <template v-else-if="hash === '#list'">
+            <b-list v-model="weekdays" v-model:selection="selectedWeekdays" selectable>
+                <template #default="item">
+                    {{ item.value }}
+                </template>
+            </b-list>
+
+            <b-flex align="center">
+                <b-spacer />
+                <b-label :badge="selectedWeekdays.length">Selection</b-label>
+            </b-flex>
+        </template>
+
         <template v-else-if="hash === '#markdown'">
             <b-markdown :content="'Sample text attributes _italic_, **bold** and `monospace`.'" />
         </template>
@@ -595,6 +608,7 @@ const components: Record<string, string> = {
     icon: "Icon",
     input: "Input",
     label: "Label",
+    list: "List",
     markdown: "Markdown",
     message: "Message",
     modal: "Modal",
@@ -615,6 +629,7 @@ const weekdays = [...new Array(7).keys()].map(i => locale.format(new Date(1970, 
 const bienta = useBienta();
 
 const hash = ref("");
+const selectedWeekdays = ref<string[]>([]);
 
 const models = ref({
     checkbox: false,

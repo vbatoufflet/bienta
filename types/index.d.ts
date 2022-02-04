@@ -145,7 +145,9 @@ export declare type InputPublicInstance = PublicInstance<{
 
 export declare type LabelPublicInstance = PublicInstance;
 
-export declare type ListPublicInstance = PublicInstance;
+export declare type ListPublicInstance = PublicInstance<{
+    selectAll(state?: boolean): void;
+}>;
 
 export declare type MainPublicInstance = PublicInstance;
 
