@@ -13,8 +13,14 @@ export default defineConfig({
             fileName: format => `bienta.${format}.js`,
         },
         rollupOptions: {
+            external: ["dompurify", "marked", "vue"],
             output: {
                 exports: "named",
+                globals: {
+                    dompurify: "DOMPurify",
+                    marked: "marked",
+                    vue: "Vue",
+                },
             },
         },
     },
