@@ -4,7 +4,9 @@
   "description": "UI components and directives for Vue.js",
   "author": "Vincent Batoufflet <vincent@batou.dev>",
   "license": "MIT",
-  "types": "dist/index.d.ts",
+  "main": "dist/bienta.umd.js",
+  "module": "dist/bienta.es.js",
+  "types": "types/index.d.ts",
   "scripts": {
     "build": "vue-tsc --noEmit && vite build",
     "build:docs": "vite build --config docs/vite.config.ts",
