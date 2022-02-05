@@ -30,6 +30,8 @@ import {createApp} from "vue";
 
 import app from "./app.vue";
 
+import "@batou.dev/bienta/dist/style.css";
+
 createApp(app)
     .use(createBienta())
     .mount(document.body);
