@@ -43,7 +43,7 @@ export declare class Bienta {
 
 export declare interface Options {
     iconPack?: IconPack;
-    persistState?: false | {key: string; storage: Storage};
+    persistState?: false | {key?: string; storage?: Storage};
     shortcuts?: boolean;
     theme?: string;
 }
