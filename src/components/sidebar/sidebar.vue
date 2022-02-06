@@ -11,7 +11,7 @@ import {PropType, nextTick, onBeforeMount, onBeforeUnmount, ref, watch} from "vu
 
 import {generateID} from "~src/components/common";
 import {updateDOMDataset} from "~src/helpers";
-import {useBienta} from "~src/inject";
+import {useBienta} from "~src/index";
 import {SidebarClip, SidebarMode} from "~types";
 
 export default {

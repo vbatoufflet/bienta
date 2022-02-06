@@ -83,7 +83,7 @@ import {generateID} from "~src/components/common";
 import bDropdown from "~src/components/dropdown/dropdown.vue";
 import bIcon from "~src/components/icon/icon.vue";
 import {shortcutLabel} from "~src/directives/shortcut";
-import {useBienta} from "~src/inject";
+import {useBienta} from "~src/index";
 import {BadgeColor, ButtonType, DropdownAnchor, DropdownPublicInstance, IconPack} from "~types";
 
 export default {

@@ -50,6 +50,8 @@ export declare interface Options {
 
 export declare function createBienta(opts?: Options): Bienta;
 
+export declare function useBienta(): Bienta;
+
 export declare interface State {
     shortcut: ShortcutState;
     sidebar: SidebarState;

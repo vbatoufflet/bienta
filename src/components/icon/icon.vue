@@ -10,7 +10,7 @@
 import {PropType, computed} from "vue";
 
 import {generateID} from "~src/components/common";
-import {useBienta} from "~src/inject";
+import {useBienta} from "~src/index";
 import {IconPack} from "~types";
 
 export default {

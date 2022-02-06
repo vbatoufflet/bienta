@@ -1,16 +1,17 @@
-import {App, Component, ExtractPropTypes, nextTick, reactive, watch} from "vue";
+import {App, Component, ExtractPropTypes, inject, nextTick, reactive, watch} from "vue";
 
 import * as components from "~src/components";
 import {closeModal, openModal} from "~src/components/modal";
 import * as directives from "~src/directives";
 import {mergeObjects} from "~src/helpers";
-import {injectKey} from "~src/inject";
 import {withDefaults} from "~src/options";
 import themes, {switchTheme} from "~src/themes";
 import {DeepRequired, Options, State, Theme} from "~types";
 
 // eslint-disable-next-line import/no-unassigned-import
 import "./style/index.scss";
+
+const injectKey = "bienta";
 
 export class Bienta {
     public container: HTMLElement | undefined;
@@ -148,4 +149,13 @@ export default Bienta;
 
 export function createBienta(opts?: Options): Bienta {
     return new Bienta(opts);
+}
+
+export function useBienta(): Bienta {
+    const bienta = inject<Bienta>(injectKey);
+    if (!bienta) {
+        throw new Error("cannot inject Bienta");
+    }
+
+    return bienta;
 }
