@@ -188,24 +188,24 @@
 
 ## Properties
 
-| Name            | Type                                                                                  | Default         | Description                                                       |
-|-----------------|---------------------------------------------------------------------------------------|-----------------|-------------------------------------------------------------------|
-| badge           | `number` or `string`                                                                  |                 | Badge content.                                                    |
-| badge-color     | `"danger"`, `"info"`, `"success"` or `"warning"`                                      |                 | Badge color.                                                      |
-| color           | `"danger"`, `"info"`, `"success"` or `"warning"`                                      |                 | Button color.                                                     |
-| controls        | `string`                                                                              |                 | Value to set `aria-controls` property to.                         |
-| disabled        | `boolean`                                                                             | `false`         | Disable state flag.                                               |
-| dropdown-anchor | `"bottom-left"`, `"bottom-right"`, `"left"`, `"right"`, `"top-left"` or `"top-right"` | `"bottom-left"` | Dropdown menu anchor.                                             |
-| dropdown-icon   | `string`                                                                              |                 | Dropdown icon override.                                           |
-| href            | `string`                                                                              |                 | Value to set `href` property to.                                  |
-| icon-name       | `string`                                                                              |                 | Icon name.                                                        |
-| icon-badge      | `number` or `string`                                                                  |                 | Icon badge content.                                               |
-| icon-pack       | `boolean`                                                                             |                 | Icon flip flag.                                                   |
-| label           | `string`                                                                              |                 | Component label.                                                  |
-| target          | `string`                                                                              |                 | Value to set the anchor element `target` property to.             |
-| to              | `string` or `Location`                                                                |                 | Value to set the `to` property to (used by `<router-link>` tags). |
-| tabindex        | `number`                                                                              |                 | Value to set the anchor element `tabindex` property to.           |
-| type            | `"button"`, `"reset"` or `"submit"`                                                   | `"button"`      | Button type.                                                      |
+| Name               | Type                                                                                  | Default         | Description                                                       |
+|--------------------|---------------------------------------------------------------------------------------|-----------------|-------------------------------------------------------------------|
+| badge              | `number` or `string`                                                                  |                 | Badge content.                                                    |
+| badge-color        | `"danger"`, `"info"`, `"success"` or `"warning"`                                      |                 | Badge color.                                                      |
+| color              | `"danger"`, `"info"`, `"success"` or `"warning"`                                      |                 | Button color.                                                     |
+| controls           | `string`                                                                              |                 | Value to set `aria-controls` property to.                         |
+| disabled           | `boolean`                                                                             | `false`         | Disable state flag.                                               |
+| dropdown-anchor    | `"bottom-left"`, `"bottom-right"`, `"left"`, `"right"`, `"top-left"` or `"top-right"` | `"bottom-left"` | Dropdown menu anchor.                                             |
+| dropdown-icon-name | `string`                                                                              |                 | Dropdown icon override.                                           |
+| href               | `string`                                                                              |                 | Value to set `href` property to.                                  |
+| icon-name          | `string`                                                                              |                 | Icon name.                                                        |
+| icon-badge         | `number` or `string`                                                                  |                 | Icon badge content.                                               |
+| icon-pack          | `boolean`                                                                             |                 | Icon flip flag.                                                   |
+| label              | `string`                                                                              |                 | Component label.                                                  |
+| target             | `string`                                                                              |                 | Value to set the anchor element `target` property to.             |
+| to                 | `string` or `Location`                                                                |                 | Value to set the `to` property to (used by `<router-link>` tags). |
+| tabindex           | `number`                                                                              |                 | Value to set the anchor element `tabindex` property to.           |
+| type               | `"button"`, `"reset"` or `"submit"`                                                   | `"button"`      | Button type.                                                      |
 
 <script setup>
 import {ref} from "vue";

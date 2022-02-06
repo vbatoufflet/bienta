@@ -195,6 +195,10 @@ watch(
 
             display: inline-block;
 
+            .content > .label {
+                justify-content: flex-start;
+            }
+
             > .content:focus,
             > .content:hover {
                 --background: var(--sidebar-hover-background);

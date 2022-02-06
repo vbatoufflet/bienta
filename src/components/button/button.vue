@@ -57,7 +57,7 @@
             <b-icon
                 v-if="hasDropdown && !iconName?.startsWith('angle-')"
                 class="caret"
-                :name="dropdownIcon ?? (inDropdown ? 'angle-right' : 'angle-down')"
+                :name="dropdownIconName ?? (inDropdown ? 'angle-right' : 'angle-down')"
             />
         </component>
 
@@ -122,7 +122,7 @@ const props = defineProps({
         default: "bottom-left",
         type: String as PropType<DropdownAnchor>,
     },
-    dropdownIcon: {
+    dropdownIconName: {
         default: undefined,
         type: String,
     },
@@ -184,19 +184,23 @@ const tag = computed(() => (props.to ? "router-link" : "a"));
 
 const focus = () => contentElement.value?.focus();
 
+const handleForm = () => {
+    const form = baseElement.value?.closest<HTMLFormElement>("form");
+    if (form) {
+        if (props.type === "reset") {
+            form.reset();
+        } else if (props.type === "submit") {
+            form.requestSubmit
+                ? form.requestSubmit()
+                : // See https://bugs.webkit.org/show_bug.cgi?id=197958
+                  form.dispatchEvent(new Event("submit", {cancelable: true}));
+        }
+    }
+};
+
 const onClick = (ev: MouseEvent) => {
     if (props.type !== "button") {
-        const form = baseElement.value?.closest<HTMLFormElement>("form");
-        if (form) {
-            if (props.type === "reset") {
-                form.reset();
-            } else if (props.type === "submit") {
-                form.requestSubmit
-                    ? form.requestSubmit()
-                    : // See https://bugs.webkit.org/show_bug.cgi?id=197958
-                      form.dispatchEvent(new Event("submit", {cancelable: true}));
-            }
-        }
+        handleForm();
     }
 
     if (inDropdown.value && !hasDropdown.value) {
@@ -237,6 +241,9 @@ const onKeydown = (ev: KeyboardEvent) => {
     if (hasDropdown.value) {
         onDropdown(ev);
     } else {
+        if (props.type !== "button") {
+            handleForm();
+        }
         baseElement.value?.dispatchEvent(new Event("click"));
     }
 };
@@ -314,6 +321,7 @@ watch(active, state => dropdownComponent.value?.toggle(state));
         color: var(--color);
         cursor: pointer;
         display: flex;
+        flex-grow: 1;
         gap: 0.75rem;
         height: 100%;
         justify-content: center;
@@ -328,6 +336,7 @@ watch(active, state => dropdownComponent.value?.toggle(state));
             align-items: center;
             display: flex;
             flex-grow: 1;
+            justify-content: center;
 
             + .b-badge {
                 margin-left: 0.25rem;
