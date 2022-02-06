@@ -208,7 +208,7 @@ const onClick = (ev: MouseEvent) => {
         (ev.target as Element | null)
             ?.closest(".b-dropdown")
             ?.parentNode?.querySelector(".content")
-            ?.dispatchEvent(new Event("focusout", {bubbles: true}));
+            ?.dispatchEvent(new FocusEvent("focusout", {bubbles: true}));
     } else if (hasDropdown.value && !active.value) {
         onDropdown(ev);
     }
@@ -244,7 +244,7 @@ const onKeydown = (ev: KeyboardEvent) => {
         if (props.type !== "button") {
             handleForm();
         }
-        baseElement.value?.dispatchEvent(new Event("click"));
+        baseElement.value?.dispatchEvent(new MouseEvent("click"));
     }
 };
 
@@ -269,9 +269,9 @@ const onPointer = (ev: PointerEvent) => {
 
 const onShortcut = () => {
     if (props.href || props.to) {
-        baseElement.value?.querySelector(".content")?.dispatchEvent(new Event("click"));
+        baseElement.value?.querySelector(".content")?.dispatchEvent(new MouseEvent("click"));
     } else {
-        baseElement.value?.dispatchEvent(new Event("click"));
+        baseElement.value?.dispatchEvent(new MouseEvent("click"));
     }
 };
 

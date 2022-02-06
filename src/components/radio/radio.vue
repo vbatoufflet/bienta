@@ -93,7 +93,7 @@ const onKeydown = (ev: KeyboardEvent) => {
 
     if (sibling) {
         sibling.focus();
-        sibling.dispatchEvent(new Event("click"));
+        sibling.dispatchEvent(new MouseEvent("click"));
     }
 };
 
