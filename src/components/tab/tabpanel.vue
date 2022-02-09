@@ -12,6 +12,7 @@
             <b-button
                 :aria-selected="active"
                 :badge="badge"
+                :badge-color="badgeColor"
                 :class="{active}"
                 :controls="id"
                 :disabled="disabled ? true : undefined"
@@ -33,7 +34,7 @@ import {PropType, getCurrentInstance, onMounted, onUpdated, ref} from "vue";
 
 import bButton from "~src/components/button/button.vue";
 import {generateID} from "~src/components/common";
-import {IconPack} from "~types";
+import {BadgeColor, IconPack} from "~types";
 
 export interface TabswitchEvent {
     id: string;
@@ -52,6 +53,10 @@ defineProps({
     badge: {
         default: undefined,
         type: [Number, String],
+    },
+    badgeColor: {
+        default: undefined,
+        type: String as PropType<BadgeColor>,
     },
     disabled: {
         default: false,

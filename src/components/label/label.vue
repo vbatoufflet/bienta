@@ -9,7 +9,7 @@
 
         <slot></slot>
 
-        <b-badge v-if="badge">{{ badge }}</b-badge>
+        <b-badge v-if="badge" :color="badgeColor">{{ badge }}</b-badge>
     </div>
 </template>
 
@@ -19,7 +19,7 @@ import {PropType} from "vue";
 import bBadge from "~src/components/badge/badge.vue";
 import {generateID} from "~src/components/common";
 import bIcon from "~src/components/icon/icon.vue";
-import {IconPack} from "~types";
+import {BadgeColor, IconPack} from "~types";
 
 export default {
     name: "b-label",
@@ -35,6 +35,10 @@ defineProps({
     badge: {
         default: undefined,
         type: [Number, String],
+    },
+    badgeColor: {
+        default: undefined,
+        type: String as PropType<BadgeColor>,
     },
     iconBadge: {
         default: undefined,
