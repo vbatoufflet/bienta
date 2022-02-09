@@ -84,7 +84,14 @@ import bDropdown from "~src/components/dropdown/dropdown.vue";
 import bIcon from "~src/components/icon/icon.vue";
 import {shortcutLabel} from "~src/directives/shortcut";
 import {useBienta} from "~src/index";
-import {BadgeColor, ButtonType, DropdownAnchor, DropdownPublicInstance, IconPack} from "~types";
+import {
+    BadgeColor,
+    ButtonColor,
+    ButtonType,
+    DropdownAnchor,
+    DropdownPublicInstance,
+    IconPack,
+} from "~types";
 
 export default {
     name: "b-button",
@@ -108,7 +115,7 @@ const props = defineProps({
     },
     color: {
         default: undefined,
-        type: String,
+        type: String as PropType<ButtonColor>,
     },
     controls: {
         default: undefined,

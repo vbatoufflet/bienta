@@ -145,8 +145,18 @@ defineExpose({isActive, toggle});
             --background: var(--dropdown-background);
             --button-hover-background: var(--dropdown-background);
             --main-button-background: var(--dropdown-background);
+            --orig-color: var(--color);
 
             display: inline-block;
+
+            &[data-color] > .content {
+                --background: transparent;
+                --color: var(--orig-color);
+            }
+
+            > .content > .label {
+                justify-content: flex-start;
+            }
 
             &.active > .content {
                 --button-hover-background: var(--dropdown-active-background);
@@ -156,6 +166,7 @@ defineExpose({isActive, toggle});
             > .content:focus:is(:hover),
             > .content:hover {
                 --button-hover-background: var(--primary);
+                --color: white;
             }
         }
 

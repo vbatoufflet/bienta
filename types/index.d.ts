@@ -76,6 +76,8 @@ export declare type BadgeColor = "danger" | "info" | "success" | "warning";
 
 export declare type BadgePublicInstance = PublicInstance;
 
+export declare type ButtonColor = "danger" | "primary" | "success" | "warning";
+
 export declare type ButtonType = "button" | "reset" | "submit";
 
 export declare type ButtonPublicInstance = PublicInstance<{
