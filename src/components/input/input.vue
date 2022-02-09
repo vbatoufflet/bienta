@@ -44,6 +44,7 @@
             :aria-expanded="completion ? dropdownVisibility : undefined"
             :aria-haspopup="completion ? true : undefined"
             :aria-label="label ?? placeholder"
+            :autocapitalize="autocapitalize"
             :autocomplete="autocomplete"
             :disabled="disabled"
             :inputmode="inputMode"
@@ -133,6 +134,10 @@ export default {
 
 <script lang="ts" setup>
 const props = defineProps({
+    autocapitalize: {
+        default: undefined,
+        type: String,
+    },
     autocomplete: {
         default: undefined,
         type: String,
