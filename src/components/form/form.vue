@@ -32,14 +32,17 @@ const baseElement = ref<HTMLFormElement>();
 
 const onReset = () => {
     const resetEv = new CustomEvent("reset");
-    document.querySelectorAll("[data-validity]").forEach(el => el.dispatchEvent(resetEv));
+    baseElement.value?.querySelectorAll("[data-validity]").forEach(el => el.dispatchEvent(resetEv));
 };
 
 const onSubmit = (ev: Event) => {
     ev.stopImmediatePropagation();
 
     const reportEv = new CustomEvent("report-validity");
-    document.querySelectorAll("[data-validity]").forEach(el => el.dispatchEvent(reportEv));
+
+    baseElement.value
+        ?.querySelectorAll("[data-validity]")
+        .forEach(el => el.dispatchEvent(reportEv));
 
     nextTick(() => {
         if (
