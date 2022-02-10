@@ -53,4 +53,10 @@ const onSubmit = (ev: Event) => {
         }
     });
 };
+
+const reset = () => baseElement.value?.reset();
+
+const submit = () => baseElement.value?.submit();
+
+defineExpose({reset, submit});
 </script>

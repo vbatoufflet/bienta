@@ -129,6 +129,11 @@ export declare type FlexWrap = "nowrap" | "wrap-reverse" | "wrap";
 
 export declare type FlexPublicInstance = PublicInstance;
 
+export declare type FormPublicInstance = PublicInstance<{
+    reset(): void;
+    submit(): void;
+}>;
+
 export declare type IconPack = "font-awesome" | "material";
 
 export declare type IconPublicInstance = PublicInstance;
