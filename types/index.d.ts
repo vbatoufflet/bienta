@@ -168,6 +168,8 @@ export declare type MessageType = "error" | "info" | "success" | "warning";
 
 export declare type MessagePublicInstance = PublicInstance;
 
+export declare type ModalPublicInstance = PublicInstance;
+
 export declare type PaginationPublicInstance = PublicInstance<{
     switchPage(page: number): void;
 }>;
