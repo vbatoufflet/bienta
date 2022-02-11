@@ -609,11 +609,11 @@ defineExpose({checkValidity, focus, reportValidity});
         width: 16rem;
 
         &[data-anchor^="bottom"] {
-            transform: translateY(0.15rem);
+            transform: translateY(var(--input-focus-width));
         }
 
         &[data-anchor^="top"] {
-            transform: translateY(-0.15rem);
+            transform: translateY(calc(-1 * var(--input-focus-width)));
         }
 
         .cursor {

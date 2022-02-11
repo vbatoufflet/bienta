@@ -31,12 +31,11 @@
 	}
 
 	&:focus-within {
-		box-shadow: 0 0 0 0.15rem var(--primary);
-		outline: none;
+		@include input-focus;
 	}
 
 	&[aria-invalid="true"] {
-		box-shadow: 0 0 0 0.15rem var(--red);
+		@include input-invalid;
 	}
 
 	input {
@@ -107,4 +106,13 @@
 	.b-dropdown {
 		min-width: 100%;
 	}
+}
+
+@mixin input-focus {
+	box-shadow: 0 0 0 var(--input-focus-width) var(--primary);
+	outline: none;
+}
+
+@mixin input-invalid {
+	box-shadow: 0 0 0 var(--input-focus-width) var(--red);
 }

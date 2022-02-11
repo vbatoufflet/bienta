@@ -9,6 +9,7 @@ const theme: Omit<Theme, "name"> = {
     "button-size": "2.5rem",
 
     // input
+    "input-focus-width": "0.15rem",
     "input-min-width": "14rem",
     "input-padding": "0.75rem",
     "input-size": "2.5rem",
