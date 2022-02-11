@@ -33,6 +33,8 @@ export declare class Bienta {
         props: Partial<ExtractPropTypes<T>>,
     ): Promise<unknown>;
 
+    public shortcutLabel(keys: string): string;
+
     public switchTheme(name: string | null): void;
     public switchTheme(name: "external", theme: Theme): void;
 
