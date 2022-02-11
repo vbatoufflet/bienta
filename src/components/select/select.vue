@@ -93,7 +93,7 @@
                     role="option"
                     :tabindex="-1"
                 >
-                    {{ typeof option === "string" ? option : option.value }}
+                    {{ typeof option === "string" ? option : option.label }}
                 </b-button>
             </slot>
         </b-dropdown>
