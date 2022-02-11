@@ -205,7 +205,8 @@ watch(
             }
 
             &.active > .content,
-            > .content:active {
+            > .content:active,
+            > .content.active {
                 --background: var(--sidebar-active-background);
             }
         }

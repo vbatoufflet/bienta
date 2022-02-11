@@ -377,7 +377,8 @@ watch(active, state => dropdownComponent.value?.toggle(state));
         &.active > .content,
         > .content:active,
         > .content:focus,
-        > .content:hover {
+        > .content:hover,
+        > .content.active {
             --background: var(--light-red);
         }
     }
@@ -390,7 +391,8 @@ watch(active, state => dropdownComponent.value?.toggle(state));
         &.active > .content,
         > .content:active,
         > .content:focus,
-        > .content:hover {
+        > .content:hover,
+        > .content.active {
             --background: var(--light-primary);
         }
     }
@@ -403,7 +405,8 @@ watch(active, state => dropdownComponent.value?.toggle(state));
         &.active > .content,
         > .content:active,
         > .content:focus,
-        > .content:hover {
+        > .content:hover,
+        > .content.active {
             --background: var(--light-green);
         }
     }
@@ -416,7 +419,8 @@ watch(active, state => dropdownComponent.value?.toggle(state));
         &.active > .content,
         > .content:active,
         > .content:focus,
-        > .content:hover {
+        > .content:hover,
+        > .content.active {
             --background: var(--light-yellow);
         }
     }
@@ -424,7 +428,8 @@ watch(active, state => dropdownComponent.value?.toggle(state));
     &.active > .content,
     > .content:active,
     > .content:focus,
-    > .content:hover {
+    > .content:hover,
+    > .content.active {
         --background: var(--button-hover-background);
         --color: var(--button-hover-color);
 
