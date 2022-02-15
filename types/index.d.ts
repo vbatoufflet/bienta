@@ -28,6 +28,8 @@ export declare class Bienta {
 
     public install(app: App): void;
 
+    public notify(opts: NotifyOpts): void;
+
     public openModal<T = unknown, U = unknown>(
         component: Component<U>,
         props: Partial<ExtractPropTypes<U>>,
@@ -171,6 +173,17 @@ export declare type MessageType = "error" | "info" | "success" | "warning";
 export declare type MessagePublicInstance = PublicInstance;
 
 export declare type ModalPublicInstance = PublicInstance;
+
+export declare type NotifierPublicInstance = PublicInstance;
+
+export declare interface NotifyOpts {
+    dismissAfter?: number;
+    iconName?: string;
+    text: string;
+    type: NotifyType;
+}
+
+export declare type NotifyType = "error" | "info" | "success" | "warning";
 
 export declare type PaginationPublicInstance = PublicInstance<{
     switchPage(page: number): void;

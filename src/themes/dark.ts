@@ -64,6 +64,10 @@ const theme: Theme = {
     "modal-background": "#131317bf",
     "modal-dialog-shadow": "#0b0b0f",
 
+    // notifier
+    "notifier-message-background": "#333337",
+    "notifier-message-shadow": "#131317",
+
     // search
     "search-background": "#13131755",
     "search-input-shadow": "#0b0b0f",

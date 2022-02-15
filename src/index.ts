@@ -2,12 +2,13 @@ import {App, Component, ExtractPropTypes, inject, nextTick, reactive, watch} fro
 
 import * as components from "~src/components";
 import {closeModal, openModal} from "~src/components/modal";
+import {notify} from "~src/components/notifier";
 import * as directives from "~src/directives";
 import {shortcutLabel} from "~src/directives/shortcut";
 import {mergeObjects} from "~src/helpers";
 import {withDefaults} from "~src/options";
 import themes, {switchTheme} from "~src/themes";
-import {DeepRequired, Options, State, Theme} from "~types";
+import {DeepRequired, NotifyOpts, Options, State, Theme} from "~types";
 
 // eslint-disable-next-line import/no-unassigned-import
 import "./style/index.scss";
@@ -80,6 +81,14 @@ export class Bienta {
         if (this.options.persistState) {
             watch(this.state, () => this.persistState(), {immediate: true});
         }
+    }
+
+    public notify(opts: NotifyOpts): void {
+        if (!this.app) {
+            throw new Error("cannot get application");
+        }
+
+        notify(this.app, opts);
     }
 
     public openModal<T = unknown>(
