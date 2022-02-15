@@ -83,6 +83,13 @@ onMounted(() => {
         margin: 10vh 0;
         padding: var(--modal-dialog-padding);
         position: relative;
+
+        ::v-deep() {
+            .b-button {
+                --background: var(--main-button-background);
+                --color: var(--main-button-color);
+            }
+        }
     }
 }
 </style>

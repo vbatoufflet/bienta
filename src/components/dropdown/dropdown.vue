@@ -179,6 +179,10 @@ defineExpose({isActive, toggle});
             margin: 0.35rem var(--button-padding);
         }
 
+        > .b-label {
+            white-space: nowrap;
+        }
+
         > .b-message {
             margin: var(--button-padding);
         }
