@@ -55,7 +55,7 @@
             </div>
 
             <b-icon
-                v-if="hasDropdown && !iconName?.startsWith('angle-')"
+                v-if="hasDropdown && !iconName?.startsWith('angle-') && dropdownIconName !== null"
                 class="caret"
                 :name="dropdownIconName ?? (inDropdown ? 'angle-right' : 'angle-down')"
             />
@@ -131,7 +131,7 @@ const props = defineProps({
     },
     dropdownIconName: {
         default: undefined,
-        type: String,
+        type: String as PropType<string | null>,
     },
     href: {
         default: undefined,
