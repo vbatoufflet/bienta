@@ -296,11 +296,7 @@ const onKeydown = (ev: KeyboardEvent) => {
         ev.preventDefault();
         applyStep(ev.code === "ArrowDown" ? -props.step : props.step);
         return;
-    } else if (!dropdownVisibility.value) {
-        return;
     }
-
-    onDropdownKeydown(ev, activeIndex, selectItem, completionItems.value.length);
 
     if (ev.code === "Escape") {
         if (dropdownVisibility.value) {
@@ -311,7 +307,13 @@ const onKeydown = (ev: KeyboardEvent) => {
             ev.preventDefault();
             clear();
         }
+
+        return;
+    } else if (!dropdownVisibility.value) {
+        return;
     }
+
+    onDropdownKeydown(ev, activeIndex, selectItem, completionItems.value.length);
 };
 
 const onPointer = (ev: MouseEvent) => onDropdownMouse(ev, activeIndex, selectItem);
