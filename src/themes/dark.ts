@@ -50,6 +50,7 @@ const theme: Theme = {
 
     // list
     "list-border": "#333337",
+    "list-toolbar-background": "#2b2b2f",
 
     // main
     "main-button-background": "#2f2f33",
