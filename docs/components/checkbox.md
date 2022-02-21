@@ -36,6 +36,7 @@
 |----------|-------------------------|-----------|--------------------------------------------|
 | disabled | `boolean`               | `false`   | Disable state flag.                        |
 | label    | `string`                |           | Component label.                           |
+| partial  | `boolean`               | `false`   | Partial selection flag.                    |
 | type     | `"check"` or `"toggle"` | `"check"` | Checkbox type.                             |
 | v-model  | `boolean` or `array`    |           | Two-way value data binding. **[required]** |
 | value    | `any`                   | `false`   | Value to associate the checkbox with.      |

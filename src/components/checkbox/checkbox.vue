@@ -17,7 +17,8 @@
         @shortcut="toggle"
     >
         <div v-if="type === 'check'" class="check">
-            <b-icon-check v-if="checked" />
+            <b-icon-check v-if="checked && !partial" />
+            <b-icon-minus v-if="checked && partial" />
         </div>
 
         <div v-else aria-hidden="true" class="toggle"></div>
@@ -33,12 +34,14 @@ import {PropType, computed, onMounted, onUpdated, ref, useSlots} from "vue";
 
 import {generateID} from "~src/components/common";
 import bIconCheck from "~src/components/icon/internal/check.vue";
+import bIconMinus from "~src/components/icon/internal/minus.vue";
 import {CheckboxType} from "~types";
 
 export default {
     name: "b-checkbox",
     components: {
         bIconCheck,
+        bIconMinus,
     },
 };
 </script>
@@ -56,6 +59,10 @@ const props = defineProps({
     modelValue: {
         required: true,
         type: [Array, Boolean],
+    },
+    partial: {
+        default: false,
+        type: Boolean,
     },
     type: {
         default: "check",
