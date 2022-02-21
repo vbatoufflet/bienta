@@ -83,11 +83,7 @@ function beforeMount(
     };
 
     for (const value of splitValue(keys)) {
-        if (value.length > 1) {
-            if (!isModifier(value)) {
-                throw new Error(`unsupported shortcut modifier: ${value}`);
-            }
-
+        if (isModifier(value)) {
             modifiers[value] = true;
         } else if (key) {
             throw new Error(`shortcut cannot contain multiple base keys: ${key} and ${value}`);
