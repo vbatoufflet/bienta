@@ -251,7 +251,7 @@ const onKeydown = (ev: KeyboardEvent) => {
         if (props.type !== "button") {
             handleForm();
         }
-        baseElement.value?.dispatchEvent(new MouseEvent("click"));
+        baseElement.value?.dispatchEvent(new Event("click"));
     }
 };
 
@@ -276,9 +276,9 @@ const onPointer = (ev: PointerEvent) => {
 
 const onShortcut = () => {
     if (props.href || props.to) {
-        baseElement.value?.querySelector(".content")?.dispatchEvent(new MouseEvent("click"));
+        baseElement.value?.querySelector(".content")?.dispatchEvent(new Event("click"));
     } else {
-        baseElement.value?.dispatchEvent(new MouseEvent("click"));
+        baseElement.value?.dispatchEvent(new Event("click"));
     }
 };
 
