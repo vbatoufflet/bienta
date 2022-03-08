@@ -1,22 +1,28 @@
 import {App, Component, ExtractPropTypes, createVNode, render, withCtx} from "vue";
 
+import {generateID} from "~src/components/common";
+
 import bModal from "./modal.vue";
 
-let resolveFn: ((value?: unknown) => void) | undefined;
-let rejectFn: ((reason?: any) => void) | undefined; // eslint-disable-line @typescript-eslint/no-explicit-any
-let wrapper: HTMLElement | undefined;
+interface ModalRef {
+    resolve(value?: unknown): void;
+    reject(reason?: any): void; // eslint-disable-line @typescript-eslint/no-explicit-any
+    wrapper: HTMLElement;
+}
+
+const modals = new Array<ModalRef>();
 
 export function openModal<T = unknown>(
     app: App,
     type: Component<T>,
     props: Partial<ExtractPropTypes<T>>,
 ): Promise<unknown | undefined> {
-    if (wrapper) {
-        rejectFn?.("canceled");
-        render(null, wrapper);
+    if (modals.length > 0) {
+        modals[0].wrapper.style.display = "none";
     }
 
-    wrapper = document.body.appendChild(document.createElement("div"));
+    const wrapper = document.body.appendChild(document.createElement("div"));
+    wrapper.id = generateID("modal");
     wrapper.classList.add("b-wrapper");
 
     const child = createVNode(type, props);
@@ -27,17 +33,20 @@ export function openModal<T = unknown>(
     render(modal, wrapper);
 
     return new Promise((resolve, reject) => {
-        resolveFn = resolve;
-        rejectFn = reject;
+        modals.unshift({resolve, reject, wrapper});
     });
 }
 
 export function closeModal(value: unknown, reject = false): void {
-    if (wrapper) {
-        render(null, wrapper);
-        wrapper.remove();
-        wrapper = undefined;
+    const ref = modals.shift();
+    if (ref?.wrapper) {
+        render(null, ref.wrapper);
+        ref.wrapper.remove();
 
-        (reject ? rejectFn : resolveFn)?.(value);
+        (reject ? ref.reject : ref.resolve)?.(value);
+
+        if (modals.length > 0) {
+            modals[0].wrapper.style.removeProperty("display");
+        }
     }
 }
