@@ -28,9 +28,11 @@ const id = generateID("badge");
 
 <style lang="scss" scoped>
 .b-badge {
+    align-items: center;
     background-color: var(--color);
     border-radius: 1.25rem;
     color: var(--background);
+    display: inline-flex;
     font-size: 0.8rem;
     height: 1.25rem;
     line-height: 1.25rem;
