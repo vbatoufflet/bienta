@@ -20,36 +20,28 @@ export default {
 <script lang="ts" setup>
 const props = defineProps({
     modelValue: {
-        default: 0,
-        type: Number,
+        default: undefined,
+        type: String,
     },
 });
 
 const emit = defineEmits<{
-    (ev: "update:modelValue", value: number): void;
+    (ev: "update:modelValue", value: string | undefined): void;
 }>();
 
 const id = generateID("tablist");
 
-let tabs: string[] = [];
-
 const baseElement = ref<HTMLElement>();
 
-const switchTab = (value: number) => {
-    value = Math.min(Math.max(value, 0), (tabs.length = 1));
-    const ev = new CustomEvent<TabswitchEvent>("tabswitch", {detail: {id: tabs[value]}});
+const switchTab = (name?: string) => {
+    const ev = new CustomEvent<TabswitchEvent>("tabswitch", {detail: {name}});
     baseElement.value?.querySelectorAll('[role="tabpanel"]').forEach(el => el.dispatchEvent(ev));
 
-    emit("update:modelValue", value);
+    emit("update:modelValue", name);
 };
 
 const refresh = () => {
-    nextTick(() => {
-        if (baseElement.value) {
-            tabs = [...baseElement.value.querySelectorAll('[role="tabpanel"]')].map(el => el.id);
-            switchTab(props.modelValue);
-        }
-    });
+    nextTick(() => switchTab(props.modelValue));
 };
 
 onMounted(refresh);

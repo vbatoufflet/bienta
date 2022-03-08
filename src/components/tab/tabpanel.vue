@@ -5,6 +5,7 @@
         ref="baseElement"
         :aria-expanded="active"
         class="b-tabpanel"
+        :data-name="name"
         role="tabpanel"
         @tabswitch="onTabswitch"
     >
@@ -19,6 +20,7 @@
                 :icon-badge="iconBadge"
                 :icon-name="iconName"
                 :icon-pack="iconPack"
+                :to="to"
                 @click="swicth"
             >
                 {{ label }}
@@ -37,7 +39,7 @@ import {generateID} from "~src/components/common";
 import {BadgeColor, IconPack} from "~types";
 
 export interface TabswitchEvent {
-    id: string;
+    name?: string;
 }
 
 export default {
@@ -49,7 +51,7 @@ export default {
 </script>
 
 <script lang="ts" setup>
-defineProps({
+const props = defineProps({
     badge: {
         default: undefined,
         type: [Number, String],
@@ -57,6 +59,10 @@ defineProps({
     badgeColor: {
         default: undefined,
         type: String as PropType<BadgeColor>,
+    },
+    default: {
+        default: false,
+        type: Boolean,
     },
     disabled: {
         default: false,
@@ -78,6 +84,14 @@ defineProps({
         required: true,
         type: String,
     },
+    name: {
+        required: true,
+        type: String,
+    },
+    to: {
+        default: undefined,
+        type: Object as PropType<Record<string, unknown>>,
+    },
 });
 
 const id = generateID("tabpanel");
@@ -87,14 +101,14 @@ const baseElement = ref<HTMLElement>();
 const parentID = ref<string>();
 
 const onTabswitch = (ev: CustomEvent<TabswitchEvent>) => {
-    active.value = ev.detail.id === id;
+    active.value = (ev.detail.name === undefined && props.default) || ev.detail.name === props.name;
 };
 
 const swicth = () => {
     active.value = true;
 
     const ev = new CustomEvent<TabswitchEvent>("tabswitch", {
-        detail: {id},
+        detail: {name: props.name},
     });
 
     baseElement.value?.parentElement
