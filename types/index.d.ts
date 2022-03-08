@@ -197,7 +197,7 @@ export declare type SelectOption =
 
 export declare type SelectPublicInstance = PublicInstance<{
     checkValidity(): boolean;
-    focus(): void;
+    focus(dropdown?: boolean): void;
     reportValidity(): boolean;
 }>;
 

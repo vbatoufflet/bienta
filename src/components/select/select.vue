@@ -11,7 +11,7 @@
         :data-label="label ?? placeholder"
         :data-validity="true"
         :style="fitWidth ? `--fit-width: ${fitWidth}` : undefined"
-        @autofocus="focus()"
+        @autofocus="focus(true)"
         @click="!dropdownVisibility && toggleDropdown(true)"
         @focusout="reportValidity()"
         @reportValidity="reportValidity()"
@@ -32,7 +32,7 @@
                 :tabindex="!disabled ? 0 : undefined"
                 @keydown.enter="toggleDropdown(true)"
             >
-                {{ selectedLabel ?? placeholder }}
+                {{ selectedLabel || placeholder }}
             </b-label>
 
             <span
@@ -66,6 +66,7 @@
         />
 
         <b-dropdown
+            v-show="pending || hasEmpty || options.length > 0"
             ref="dropdownComponent"
             :aria-activedescendant="activeID"
             role="listbox"
@@ -75,6 +76,8 @@
             @pointerover="onPointer"
         >
             <b-spinner v-if="pending" :size="16" />
+
+            <slot v-else-if="options.length === 0" name="empty"></slot>
 
             <slot
                 v-for="(option, index) in options"
@@ -102,7 +105,7 @@
 
 <script lang="ts">
 import {debounce} from "debounce";
-import {PropType, computed, nextTick, ref, watch} from "vue";
+import {PropType, computed, nextTick, onMounted, onUpdated, ref, useSlots, watch} from "vue";
 
 import bButton from "~src/components/button/button.vue";
 import {generateID, onDropdownKeydown, onDropdownMouse} from "~src/components/common";
@@ -173,16 +176,20 @@ const props = defineProps({
 });
 
 const emit = defineEmits<{
+    (ev: "filter", value: string): void;
     (ev: "update:modelValue", value: unknown): void;
 }>();
 
+const slots = useSlots();
+
 const id = generateID("select");
 
-const activeIndex = ref(0);
+const activeIndex = ref(-1);
 const dropdownComponent = ref<DropdownPublicInstance>();
 const dropdownVisibility = ref(false);
 const filter = ref("");
 const fitWidth = ref<string>();
+const hasEmpty = ref(false);
 const inputElement = ref<HTMLInputElement>();
 const labelComponent = ref<LabelPublicInstance>();
 const options = ref<SelectOption[]>([]);
@@ -230,8 +237,12 @@ const checkValidity = () => {
     return !validationMessage.value;
 };
 
-const focus = () => {
-    labelComponent.value?.$el.focus();
+const focus = (dropdown = false) => {
+    if (dropdown) {
+        toggleDropdown(true);
+    } else {
+        labelComponent.value?.$el.focus();
+    }
 };
 
 const onKeydown = (ev: KeyboardEvent) => {
@@ -277,6 +288,7 @@ const toggleDropdown = async (state = !dropdownVisibility.value) => {
 
     if (state) {
         filter.value = "";
+        emit("filter", "");
         nextTick(() => inputElement.value?.focus());
 
         if (typeof props.options === "function") {
@@ -292,6 +304,8 @@ const toggleDropdown = async (state = !dropdownVisibility.value) => {
         if (typeof props.options === "function") {
             options.value = [];
         }
+
+        activeIndex.value = -1;
     }
 };
 
@@ -310,7 +324,9 @@ const updateDebounce = debounce(async () => {
             : props.options;
     }
 
-    activeIndex.value = 0;
+    emit("filter", filter.value);
+
+    activeIndex.value = options.value.length > 0 ? 0 : -1;
 }, 200);
 
 const updateSelection = (value = props.modelValue) => {
@@ -318,6 +334,14 @@ const updateSelection = (value = props.modelValue) => {
         v => (typeof v === "string" ? v : v.value) === value,
     );
 };
+
+const refresh = () => {
+    hasEmpty.value = Boolean(slots.empty);
+};
+
+onMounted(refresh);
+
+onUpdated(refresh);
 
 watch(
     () => props.modelValue,

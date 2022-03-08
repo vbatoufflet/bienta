@@ -20,7 +20,9 @@ export function onDropdownKeydown(
             }
             break;
         case "Enter":
-            select(active.value);
+            if (active.value >= 0) {
+                select(active.value);
+            }
             break;
     }
 }
