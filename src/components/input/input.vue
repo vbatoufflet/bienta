@@ -248,9 +248,15 @@ const applyStep = (step: number) => {
     if (!props.readonly) {
         emit(
             "update:modelValue",
-            (typeof props.modelValue === "number"
-                ? props.modelValue
-                : Number.parseFloat(props.modelValue)) + step,
+            Math.min(
+                Math.max(
+                    (typeof props.modelValue === "number"
+                        ? props.modelValue
+                        : Number.parseFloat(props.modelValue)) + step,
+                    props.min ?? Number.NEGATIVE_INFINITY,
+                ),
+                props.max ?? Number.POSITIVE_INFINITY,
+            ),
         );
     }
 };
