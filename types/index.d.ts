@@ -28,10 +28,10 @@ export declare class Bienta {
 
     public install(app: App): void;
 
-    public openModal<T = unknown>(
-        component: Component<T>,
-        props: Partial<ExtractPropTypes<T>>,
-    ): Promise<unknown>;
+    public openModal<T = unknown, U = unknown>(
+        component: Component<U>,
+        props: Partial<ExtractPropTypes<U>>,
+    ): Promise<T>;
 
     public shortcutLabel(keys: string): string;
 
