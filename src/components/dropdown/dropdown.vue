@@ -43,15 +43,29 @@ const adaptAnchor = () => {
 
     const rect = baseElement.value.getBoundingClientRect();
 
-    let anchor = props.anchor;
-    if (rect.top + rect.height + baseElement.value.clientHeight > window.innerHeight) {
-        anchor = anchor.replace(/^bottom/, "top") as DropdownAnchor;
-    }
-    if (rect.left + rect.width + baseElement.value.clientWidth > window.innerWidth) {
-        anchor = anchor.replace(/left$/, "right") as DropdownAnchor;
+    // Look for closest scrollable parent. If not found, handle placement relative to window
+    let cur = baseElement.value.parentElement;
+    let scrollable: DOMRect | undefined;
+    while (cur && !scrollable) {
+        const overflow = getComputedStyle(cur).overflowY;
+        if (overflow === "auto" || overflow === "scroll") {
+            scrollable = cur.getBoundingClientRect();
+            break;
+        }
+        cur = cur.parentElement;
     }
 
-    if (anchor !== props.anchor) {
+    let anchor = props.anchor;
+    anchor =
+        rect.top - (scrollable?.top ?? 0) + rect.height > (scrollable?.height ?? window.innerHeight)
+            ? (anchor.replace(/^bottom/, "top") as DropdownAnchor)
+            : (anchor.replace(/^top/, "bottom") as DropdownAnchor);
+    anchor =
+        rect.left - (scrollable?.left ?? 0) + rect.width > (scrollable?.width ?? window.innerWidth)
+            ? (anchor.replace(/left$/, "right") as DropdownAnchor)
+            : (anchor.replace(/right$/, "left") as DropdownAnchor);
+
+    if (anchor !== props.anchor || anchorOverride.value !== props.anchor) {
         anchorOverride.value = anchor;
     }
 };
@@ -63,6 +77,7 @@ const isActive = () => {
 const toggle = (state?: boolean) => {
     active.value = state !== undefined ? state : !active.value;
     if (active.value) {
+        anchorOverride.value = undefined;
         updateDOMDataset(document.body, "lock", null, id);
     } else {
         updateDOMDataset(document.body, "lock", id, null);
