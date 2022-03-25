@@ -121,7 +121,6 @@ defineExpose({focus, toggle});
     cursor: pointer;
     display: inline-flex;
     gap: 0.75rem;
-    height: var(--input-size);
     line-height: var(--input-size);
     min-height: var(--input-size);
     position: relative;

@@ -170,6 +170,10 @@ watch(clip, (to, from) => {
 
                 > .b-button {
                     &.active > .content,
+                    > .content.active {
+                        --background: var(--orig-primary);
+                    }
+
                     > .content:active,
                     > .content:focus,
                     > .content:hover {

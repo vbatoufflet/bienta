@@ -81,6 +81,9 @@ onMounted(() => {
         box-shadow: 0 0.5rem 2rem var(--modal-dialog-shadow);
         color: inherit;
         margin: 10vh 0;
+        max-height: 80vh;
+        max-width: 80vw;
+        overflow: auto;
         padding: var(--modal-dialog-padding);
         position: relative;
 

@@ -27,7 +27,7 @@ const id = generateID("main");
 
     margin: var(--delta-top) calc(var(--delta-right) + var(--delta-right-sidebar))
         var(--delta-bottom) calc(var(--delta-left) + var(--delta-left-sidebar));
-    min-height: calc(100vh - 2 * var(--main-padding));
+    min-height: 100vh;
     padding: var(--main-padding);
     position: relative;
 
